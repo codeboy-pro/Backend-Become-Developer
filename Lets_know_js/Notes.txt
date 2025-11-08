@@ -1,0 +1,574 @@
+/*
+==============================================
+JAVASCRIPT FUNDAMENTALS FOR BACKEND DEVELOPMENT
+==============================================
+This file contains essential JavaScript concepts needed for backend development
+Author: Pradip
+Date: October 2025
+*/
+
+// ===========================================
+// 1. ARRAYS AND ARRAY METHODS
+// ===========================================
+
+/*
+ARRAYS: Ordered collections of data that can store multiple values
+- Arrays are zero-indexed (first element is at index 0)
+- Can store different data types in the same array
+- Dynamic in nature (can grow or shrink)
+*/
+
+// Creating arrays
+var numbers = [1, 2, 3, 4, 5];
+var mixedArray = [1, "hello", true, null, {name: "Pradip"}];
+var emptyArray = [];
+
+console.log("Original array:", numbers);
+
+// ===========================================
+// 2. FOREACH METHOD
+// ===========================================
+
+/*
+forEach(): Executes a function for each array element
+- Does NOT return a new array
+- Cannot break or continue
+- Used for side effects (logging, DOM manipulation, etc.)
+- Syntax: array.forEach(callback(currentValue, index, array))
+*/
+
+console.log("\n=== FOREACH EXAMPLES ===");
+
+// Basic forEach
+numbers.forEach(function(value, index) {
+    console.log(`Index ${index}: ${value}`);
+});
+
+// Arrow function syntax
+numbers.forEach((value) => {
+    console.log(value + " - processed by forEach");
+});
+
+// Real-world example: Processing user data
+var users = ["Pradip", "Amit", "Rohit"];
+users.forEach((user, index) => {
+    console.log(`User ${index + 1}: Welcome ${user}!`);
+});
+
+// ===========================================
+// 3. MAP METHOD
+// ===========================================
+
+/*
+map(): Creates a NEW array by transforming each element
+- Returns a new array of the same length
+- Does not modify the original array
+- Always returns something (undefined if no return statement)
+- Used for data transformation
+*/
+
+console.log("\n=== MAP EXAMPLES ===");
+
+// Double each number
+var doubled = numbers.map(function(value) {
+    return value * 2;
+});
+console.log("Doubled array:", doubled);
+
+// Convert to strings
+var stringNumbers = numbers.map(num => `Number: ${num}`);
+console.log("String numbers:", stringNumbers);
+
+// Transform objects
+var userObjects = users.map((name, index) => {
+    return {
+        id: index + 1,
+        name: name,
+        email: `${name.toLowerCase()}@company.com`
+    };
+});
+console.log("User objects:", userObjects);
+
+// ===========================================
+// 4. FILTER METHOD
+// ===========================================
+
+/*
+filter(): Creates a NEW array with elements that pass a test
+- Returns a new array (can be shorter than original)
+- Does not modify the original array
+- Callback should return true/false
+- Used for conditional selection of elements
+*/
+
+console.log("\n=== FILTER EXAMPLES ===");
+
+// Filter numbers >= 3
+var filtered = numbers.filter(function(value) {
+    return value >= 3;
+});
+console.log("Numbers >= 3:", filtered);
+
+// Filter even numbers
+var evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log("Even numbers:", evenNumbers);
+
+// Filter users by name length
+var longNames = users.filter(name => name.length > 4);
+console.log("Names longer than 4 chars:", longNames);
+
+// Complex filtering with objects
+var products = [
+    {name: "Laptop", price: 50000, inStock: true},
+    {name: "Mouse", price: 500, inStock: false},
+    {name: "Keyboard", price: 2000, inStock: true}
+];
+
+var availableProducts = products.filter(product => product.inStock && product.price < 30000);
+console.log("Available products under 30000:", availableProducts);
+
+// ===========================================
+// 5. FIND METHOD
+// ===========================================
+
+/*
+find(): Returns the FIRST element that matches the condition
+- Returns the actual element (not an array)
+- Returns undefined if no match found
+- Stops searching after first match
+- Used to locate a specific item
+*/
+
+console.log("\n=== FIND EXAMPLES ===");
+
+// Find first number equal to 3
+var foundNumber = numbers.find(function(value) {
+    return value === 3;
+});
+console.log("Found number:", foundNumber);
+
+// Find user by name
+var foundUser = users.find(name => name === "Pradip");
+console.log("Found user:", foundUser);
+
+// Find product by name
+var foundProduct = products.find(product => product.name === "Laptop");
+console.log("Found product:", foundProduct);
+
+// Find with complex condition
+var expensiveProduct = products.find(product => product.price > 10000);
+console.log("Expensive product:", expensiveProduct);
+
+// ===========================================
+// 6. INDEXOF METHOD
+// ===========================================
+
+/*
+indexOf(): Returns the first index of specified element
+- Returns -1 if element not found
+- Uses strict equality (===) for comparison
+- Only works with primitive values (not objects)
+- Case sensitive for strings
+*/
+
+console.log("\n=== INDEXOF EXAMPLES ===");
+
+// Find index of number
+var index = numbers.indexOf(3);
+console.log("Index of 3:", index);
+
+// Find index of string
+var userIndex = users.indexOf("Pradip");
+console.log("Index of Pradip:", userIndex);
+
+// Element not found
+var notFound = numbers.indexOf(10);
+console.log("Index of 10 (not found):", notFound);
+
+// Check if element exists
+if (users.indexOf("Amit") !== -1) {
+    console.log("Amit is in the users array");
+}
+
+// ===========================================
+// 7. OBJECTS IN JAVASCRIPT
+// ===========================================
+
+/*
+OBJECTS: Collections of key-value pairs
+- Keys are strings (or Symbols)
+- Values can be any data type
+- Objects are reference types
+- Mutable by default
+*/
+
+console.log("\n=== OBJECTS EXAMPLES ===");
+
+// Creating objects
+var person = {
+    username: "Pradip",
+    age: 24,
+    salary: 2000000,
+    skills: ["JavaScript", "Node.js", "MongoDB"],
+    isEmployed: true,
+    // Method in object
+    introduce: function() {
+        return `Hi, I'm ${this.username} and I'm ${this.age} years old`;
+    }
+};
+
+console.log("Person object:", person);
+console.log("Introduction:", person.introduce());
+
+// Accessing object properties
+console.log("Username:", person.username);
+console.log("Age:", person["age"]);
+
+// Adding new properties
+person.location = "India";
+person.email = "pradip@email.com";
+console.log("Updated person:", person);
+
+// ===========================================
+// 8. OBJECT.FREEZE()
+// ===========================================
+
+/*
+Object.freeze(): Makes an object immutable
+- Cannot add, delete, or modify properties
+- Shallow freeze (nested objects are still mutable)
+- Returns the same object
+- Used for constants and preventing accidental modifications
+*/
+
+console.log("\n=== OBJECT.FREEZE EXAMPLES ===");
+
+var config = {
+    apiUrl: "https://api.example.com",
+    timeout: 5000,
+    retries: 3
+};
+
+// Freeze the object
+Object.freeze(config);
+
+// Try to modify (will fail silently in non-strict mode)
+config.timeout = 10000;
+config.newProperty = "test";
+console.log("Config after modification attempt:", config);
+
+// Check if object is frozen
+console.log("Is config frozen?", Object.isFrozen(config));
+
+// ===========================================
+// 9. FUNCTIONS AND RETURNS
+// ===========================================
+
+/*
+FUNCTIONS: Reusable blocks of code
+- Can accept parameters
+- Can return values
+- Can be stored in variables
+- Can be passed as arguments (higher-order functions)
+*/
+
+console.log("\n=== FUNCTIONS EXAMPLES ===");
+
+// Function declaration
+function calculateArea(length, width) {
+    var area = length * width;
+    return area; // Return statement sends value back to caller
+}
+
+// Function expression
+var calculatePerimeter = function(length, width) {
+    return 2 * (length + width);
+};
+
+// Arrow function (ES6+)
+var calculateDiagonal = (length, width) => {
+    return Math.sqrt(length * length + width * width);
+};
+
+// Usage examples
+var length = 10;
+var width = 5;
+
+console.log("Area:", calculateArea(length, width));
+console.log("Perimeter:", calculatePerimeter(length, width));
+console.log("Diagonal:", calculateDiagonal(length, width));
+
+// Function with multiple return paths
+function greetUser(user) {
+    if (!user) {
+        return "Hello, Guest!";
+    }
+    
+    if (user.isAdmin) {
+        return `Welcome back, Admin ${user.name}!`;
+    }
+    
+    return `Hello, ${user.name}!`;
+}
+
+console.log(greetUser());
+console.log(greetUser({name: "Pradip", isAdmin: false}));
+console.log(greetUser({name: "Admin", isAdmin: true}));
+
+// ===========================================
+// 10. ASYNCHRONOUS JAVASCRIPT
+// ===========================================
+
+/*
+ASYNC PROGRAMMING: Handling operations that take time
+- Callbacks: Functions passed to other functions
+- Promises: Objects representing eventual completion/failure
+- async/await: Syntactic sugar for promises
+- Essential for API calls, file operations, timers
+*/
+
+console.log("\n=== ASYNC JAVASCRIPT EXAMPLES ===");
+
+// ===========================================
+// 10.1 CALLBACKS
+// ===========================================
+
+/*
+Callbacks: Functions passed as arguments to other functions
+- Executed after some operation completes
+- Can lead to "callback hell" if nested too deep
+*/
+
+function fetchDataWithCallback(callback) {
+    console.log("Fetching data...");
+    setTimeout(() => {
+        var data = {id: 1, name: "Sample Data"};
+        callback(null, data); // First param: error, second: data
+    }, 2000);
+}
+
+// Using callback
+fetchDataWithCallback(function(error, data) {
+    if (error) {
+        console.log("Error:", error);
+    } else {
+        console.log("Callback received data:", data);
+    }
+});
+
+// ===========================================
+// 10.2 PROMISES
+// ===========================================
+
+/*
+Promises: Objects representing eventual completion of async operations
+- States: pending, fulfilled, rejected
+- Methods: .then(), .catch(), .finally()
+- Better error handling than callbacks
+*/
+
+function fetchDataWithPromise() {
+    return new Promise((resolve, reject) => {
+        console.log("Promise: Fetching data...");
+        setTimeout(() => {
+            var success = Math.random() > 0.3; // 70% success rate
+            
+            if (success) {
+                resolve({id: 2, name: "Promise Data"});
+            } else {
+                reject(new Error("Failed to fetch data"));
+            }
+        }, 1500);
+    });
+}
+
+// Using promises
+fetchDataWithPromise()
+    .then(data => {
+        console.log("Promise resolved with data:", data);
+        return data.id; // Can chain more .then()
+    })
+    .then(id => {
+        console.log("Processing ID:", id);
+    })
+    .catch(error => {
+        console.log("Promise rejected:", error.message);
+    })
+    .finally(() => {
+        console.log("Promise operation completed");
+    });
+
+// ===========================================
+// 10.3 ASYNC/AWAIT
+// ===========================================
+
+/*
+async/await: Modern syntax for handling promises
+- async: Makes function return a promise
+- await: Pauses execution until promise resolves
+- Cleaner, more readable than .then() chains
+- Must be used inside async functions
+*/
+
+// Async function for API call
+async function fetchUserData(userId) {
+    try {
+        console.log(`Fetching user ${userId}...`);
+        
+        // Simulating API call
+        var response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        var userData = await response.json();
+        console.log("User data received:", userData.name);
+        return userData;
+        
+    } catch (error) {
+        console.log("Error fetching user data:", error.message);
+        throw error; // Re-throw to allow caller to handle
+    }
+}
+
+// Using async/await
+async function demonstrateAsyncAwait() {
+    try {
+        var user1 = await fetchUserData(1);
+        var user2 = await fetchUserData(2);
+        
+        console.log("Both users fetched successfully");
+        return [user1, user2];
+        
+    } catch (error) {
+        console.log("Failed to fetch users:", error.message);
+    }
+}
+
+// Call async function
+demonstrateAsyncAwait();
+
+// ===========================================
+// 10.4 REAL-WORLD ASYNC EXAMPLE
+// ===========================================
+
+/*
+Practical example: Fetching random user data
+- Uses fetch API for HTTP requests
+- Handles errors gracefully
+- Demonstrates async/await in action
+*/
+
+async function getRandomUser() {
+    try {
+        console.log("Fetching random user from API...");
+        
+        var response = await fetch('https://randomuser.me/api/');
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        var data = await response.json();
+        var user = data.results[0];
+        
+        console.log("Random User Info:");
+        console.log("Name:", `${user.name.first} ${user.name.last}`);
+        console.log("Email:", user.email);
+        console.log("Country:", user.location.country);
+        
+        return user;
+        
+    } catch (error) {
+        console.log("Error fetching random user:", error.message);
+        return null;
+    }
+}
+
+// Execute the function
+getRandomUser();
+
+// ===========================================
+// 11. COMBINING CONCEPTS - PRACTICAL EXAMPLES
+// ===========================================
+
+console.log("\n=== COMBINING CONCEPTS ===");
+
+// Example: Processing user orders asynchronously
+async function processUserOrders() {
+    var orders = [
+        {id: 1, userId: 1, amount: 100, status: 'pending'},
+        {id: 2, userId: 2, amount: 250, status: 'pending'},
+        {id: 3, userId: 1, amount: 75, status: 'completed'}
+    ];
+    
+    // Filter pending orders
+    var pendingOrders = orders.filter(order => order.status === 'pending');
+    console.log("Pending orders:", pendingOrders);
+    
+    // Calculate total of pending orders
+    var totalPending = pendingOrders
+        .map(order => order.amount)
+        .reduce((sum, amount) => sum + amount, 0);
+    
+    console.log("Total pending amount:", totalPending);
+    
+    // Process each pending order
+    for (let order of pendingOrders) {
+        try {
+            await processOrder(order);
+        } catch (error) {
+            console.log(`Failed to process order ${order.id}:`, error.message);
+        }
+    }
+}
+
+// Simulate order processing
+function processOrder(order) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(`Processing order ${order.id} for $${order.amount}`);
+            
+            // 90% success rate
+            if (Math.random() > 0.1) {
+                resolve(`Order ${order.id} completed successfully`);
+            } else {
+                reject(new Error(`Payment failed for order ${order.id}`));
+            }
+        }, 1000);
+    });
+}
+
+// Run the example
+processUserOrders();
+
+/*
+==============================================
+SUMMARY FOR BACKEND DEVELOPMENT:
+
+1. ARRAYS: Use for storing collections of data
+2. FOREACH: For executing code on each element
+3. MAP: For transforming data
+4. FILTER: For selecting specific elements
+5. FIND: For locating single items
+6. INDEXOF: For finding positions
+7. OBJECTS: For structured data storage
+8. FUNCTIONS: For reusable code blocks
+9. ASYNC/AWAIT: For handling API calls and async operations
+
+These concepts are fundamental for:
+- Processing API responses
+- Handling database queries
+- Managing user data
+- Building REST APIs
+- Working with Node.js and Express
+
+NEXT STEPS:
+- Practice with real API calls
+- Learn Node.js and Express framework
+- Understand databases (MongoDB/SQL)
+- Study error handling patterns
+- Learn about middleware and routing
+==============================================
+*/

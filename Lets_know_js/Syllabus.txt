@@ -1,0 +1,12 @@
+FUNDAMENTALS OF JS:
+
+ARRAYS AND OBJECTS
+FUNCTIONS RETUENS
+
+ASYNC JS CODING
+
+foreach map filter find indexof
+
+
+
+OBJECTS

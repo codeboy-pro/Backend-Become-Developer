@@ -1,0 +1,9 @@
+create user account 
+mongoose
+Schema
+model
+userxreate -> password -> hash
+jwt token   ->cookie
+
+
+login -> token  ->decrypt -> email

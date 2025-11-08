@@ -1,0 +1,29 @@
+programming language X
+technology X
+framework X
+library X
+
+
+Node.js is a JavaScript runtime environment that allows you to run JavaScript code on the server side. It is built on Chrome's V8 JavaScript engine and enables developers to build scalable and high-performance applications using JavaScript.
+
+
+
+
+
+npm init package.json -> lekha jokha of the project
+
+
+ writefile
+appendfile
+copyfile
+rename
+unlink
+
+internet par kuchh bhi karne ke liye rules banaaye gaye hai unke
+dwaara jinhone internet banaaya hai, ab un rules ko follow karna
+jaruri hai, aur ye rules follow ho isliye ye rules aap ke operating
+system ke software mein pre installed aate hai
+
+http protocol
+yahi protocol hai ya rule hai jisko follow kare bina aap internet pe
+naa hi kuchh bhej sakte ho, naa hi kuchh manga sakte ho

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rename File</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center p-6">
+    <!-- decorative soft glow -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute -left-16 -top-16 w-80 h-80 bg-purple-700 opacity-10 rounded-full filter blur-3xl"></div>
+        <div class="absolute -right-16 -bottom-16 w-96 h-96 bg-blue-600 opacity-8 rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="w-full max-w-2xl mx-auto p-8 bg-gradient-to-br from-white/3 via-white/5 to-transparent backdrop-blur-md border border-gray-700 rounded-lg shadow-lg">
+        <a href="/" class="inline-block mb-4 text-blue-300 hover:underline font-semibold">&larr; Go back to Home</a>
+        <h2 class="text-2xl font-bold mb-6 text-white">Rename File</h2>
+        <form action="/edit" method="POST" class="space-y-6">
+            <div>
+                <label for="currentName" class="block text-sm font-medium text-gray-300 mb-1">Current File Name</label>
+                <input type="text" id="currentName" name="previous"
+                       class="w-full border border-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-900 text-white placeholder-gray-400 cursor-not-allowed"
+                       value="<%= filename %>" readonly>
+            </div>
+            <div>
+                <label for="newName" class="block text-sm font-medium text-gray-300 mb-1">New File Name</label>
+                <input type="text" id="newName" name="new"
+                       class="w-full border border-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800 text-white placeholder-gray-400"
+                       required>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-500 transition">Rename</button>
+        </form>
+    </div>
+</body>
+</html>

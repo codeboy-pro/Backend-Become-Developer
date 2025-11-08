@@ -1,0 +1,26 @@
+Introduction to Express.js.
+MERN STACK
+
+express js npm package ha 
+framework
+manages everything from receiving the request and giving the response
+
+
+
+Setting up a basic Express application.
+Routing.
+
+
+Middleware.
+jab bhi server request accept karta hai waha se route ke beech pahuchne tak
+agar aap us request ko beech me rokte ho and kuchh perform karte ho, to ye
+element middleware kehlaata hai
+
+
+
+Request and response handling.
+Error handling.
+
+
+Static files serving.
+

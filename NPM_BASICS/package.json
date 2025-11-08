@@ -1,0 +1,19 @@
+{
+  "name": "npm_basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./script.js",
+    "mala": "echo \"this is good\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pradip Maity",
+  "license": "ISC",
+  "dependencies": {
+    "one-liner-joke": "^1.2.2"
+  },
+  "devDependencies": {
+    "accessibility": "^6.1.0"
+  }
+}

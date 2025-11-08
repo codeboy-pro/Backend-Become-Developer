@@ -1,0 +1,38 @@
+Authentication & Authorization
+
+
+user profile dene se pahle ye check karna parta ha ke user hai kon -Authentication 
+
+authiorixed to perform some tasks which are only allowed to be executed by admin
+
+
+
+server hr bar bhul jayta ha ki ap kon ho?
+ab kuki server bhul jata ha ki ap kon ho har bar wo har kaam ke lie 
+apse puchega app kon ho?
+
+
+cookies and sessions
+cookies - choti file hoti ha jo apke browser me store hoti ha
+sessions - server side pe store hoti ha
+
+
+sabse pehle humhe kuch cheeze sikna ha alag alag
+i)  cookie kaise set karte ha and read karte ha 
+ii)  bcrypt kaise use karte hai for password encription and decryption 
+
+iii)jwt kya hai and jwt me data store kaise and bahar nikale.   
+
+
+
+
+
+
+
+
+
+
+bcrypt.compare("pododododo", "$2b$10$7mlWq9X2RhJja6SCGH3f3OdgXo/c6kiamM10uxBrXJ2H./qCVKLPa", function(err, result) {
+    console.log(result);
+    
+});

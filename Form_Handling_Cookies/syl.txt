@@ -1,0 +1,16 @@
+form handling and working with forms
+handle backend process of forms and making sure the data coming from any frontend 
+lib,fw,templating engines, we still handle it at the backend
+session and cookies
+hum log kuchh bhi data frontend par  browserpar rakh skte handlingand jab bhi app kuchhbhi request backend par karoge wo fe 
+par saved data automatically backend par bhi chala jayega
+
+
+
+
+
+
+tumne to beja tha plan text par server ko 
+mila blob which is bot directly readable
+kar sake
+

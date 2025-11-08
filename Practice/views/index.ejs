@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 p-6 relative overflow-hidden">
+        <!-- soft grayish vignette for depth -->
+             <h1 class="text-3xl text-white font-semibold">Create a user</h1>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 10% 10%, rgba(255,255,255,0.02), transparent 20%), radial-gradient(ellipse at 90% 90%, rgba(0,0,0,0.35), transparent 40%);"></div>
+
+        <form action="/create" method="POST" class="relative bg-gray-800/70 backdrop-blur-sm text-white p-6 rounded-lg shadow-xl w-full max-w-md space-y-4 border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100">Create Account</h2>
+
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-300">Username</label>
+                <input id="username" name="username" type="text" required minlength="2" placeholder="Your username"
+                       class="mt-1 block w-full bg-gray-700 text-white placeholder-gray-300 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+                <input id="email" name="email" type="email" required placeholder="you@example.com"
+                       class="mt-1 block w-full bg-gray-700 text-white placeholder-gray-300 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                <input id="password" name="password" type="password" required minlength="6" placeholder="••••••••"
+                       class="mt-1 block w-full bg-gray-700 text-white placeholder-gray-300 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+            </div>
+
+            <div>
+                <label for="age" class="block text-sm font-medium text-gray-300">Age</label>
+                <input id="age" name="age" type="number" min="0" required placeholder="18"
+                       class="mt-1 block w-full bg-gray-700 text-white placeholder-gray-300 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+            </div>
+
+            <div class="pt-2">
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                    Register
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+==============================================
+   BACKEND DEVELOPMENT - DAY 2: NPM BASICS
+==============================================
+
+DATE: October 9, 2025
+TOPIC: Understanding NPM (Node Package Manager)
+
+==============================================
+1. WHAT IS NPM?
+==============================================
+
+NPM stands for Node Package Manager.
+
+Key Points:
+- Package manager for JavaScript programming language
+- Default package manager for Node.js runtime environment
+- Consists of:
+  * Command line client (npm)
+  * Online database of public and paid private packages (npm registry)
+- The registry is accessed via the client
+- Available packages can be browsed and searched via npm website
+- World's largest software registry
+
+==============================================
+2. INSTALLING AND UNINSTALLING PACKAGES
+==============================================
+
+Basic Commands:
+
+INSTALL:
+  npm i packageName
+  OR
+  npm install packageName
+
+UNINSTALL:
+  npm uninstall packageName
+
+INSTALLING SPECIFIC VERSIONS:
+  npm i packageName@1.2.3
+  (Replace 1.2.3 with desired version number)
+
+==============================================
+3. UNDERSTANDING node_modules
+==============================================
+
+What is node_modules?
+- Folder that stores all installed packages
+- Contains packages and their dependencies
+- Each package may have its own dependencies, creating a dependency tree
+
+==============================================
+4. UNDERSTANDING DEPENDENCIES
+==============================================
+
+DEPENDENCIES:
+- Packages required for the application to run
+- Listed in package.json under "dependencies"
+- These are needed in both development and production
+- Installed with: npm install
+
+DEV DEPENDENCIES:
+- Packages used only during development
+- Not needed when the app is built and deployed
+- Listed in package.json under "devDependencies"
+- Installed with: npm install --save-dev OR npm i -D
+
+==============================================
+5. NPM SCRIPTS
+==============================================
+
+What are NPM Scripts?
+- Custom commands defined in package.json
+- Found under the "scripts" section
+- Can run various tasks like starting server, testing, building, etc.
+
+Understanding Scripts:
+- DEFAULT SCRIPTS: Some scripts have default behaviors
+  * npm start → runs "node index.js" by default
+  * npm test → runs test framework (e.g., jest)
+
+  
+
+- CUSTOM SCRIPTS: Can create custom scripts for any task
+  * Run with: npm run scriptName
+  * Example: npm run mala (from our package.json)
+
+PATH Understanding:
+- npm scripts have access to node_modules/.bin in PATH
+- Can run locally installed packages without full path
+
+==============================================
+6. PROJECT ANALYSIS
+==============================================
+
+Current Project Setup:
+
+PACKAGE.JSON:
+- Name: npm_basics
+- Version: 1.0.0
+- Main file: index.js
+- Author: Pradip Maity
+- License: ISC
+
+SCRIPTS DEFINED:
+1. "start": "node ./script.js"
+   - Runs script.js file
+   - Usage: npm start
+
+2. "mala": "echo \"this is good\""
+   - Custom script that prints message
+   - Usage: npm run mala
+
+3. "test": "echo \"Error: no test specified\" && exit 1"
+   - Default test script (not configured yet)
+   - Usage: npm test
+
+INSTALLED DEPENDENCIES:
+1. accessibility (v6.1.0)
+2. one-liner-joke (v1.2.2)
+
+SCRIPT.JS:
+- Simple JavaScript file
+- Currently logs: "Hello Pradiip"
+
+==============================================
+7. KEY TAKEAWAYS
+==============================================
+
+✓ NPM is essential for managing JavaScript packages
+✓ node_modules stores all dependencies
+✓ Dependencies vs DevDependencies - know when to use each
+✓ npm scripts automate common tasks
+✓ Version control: Use @version to install specific versions
+✓ Always check package.json to understand project structure
+
+==============================================
+8. BEST PRACTICES
+==============================================
+
+1. Never commit node_modules to version control (use .gitignore)
+2. Always document dependencies in package.json
+3. Use semantic versioning for package versions
+4. Use devDependencies for development-only packages
+5. Create custom scripts for repetitive tasks
+6. Keep dependencies up to date but test before updating
+7. Use package-lock.json to lock dependency versions
+
+==============================================
+NEXT STEPS FOR LEARNING
+==============================================
+
+- Learn about package-lock.json
+- Understand semantic versioning (semver)
+- Explore npm registry and finding packages
+- Learn about global vs local package installation
+- Study package.json configuration options
+- Practice creating and using custom scripts
+
+==============================================
+END OF NOTES
+==============================================

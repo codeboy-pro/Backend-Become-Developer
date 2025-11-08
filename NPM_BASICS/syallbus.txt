@@ -1,0 +1,39 @@
+//NPM understanding 
+
+//npm - node package manager
+
+//npm is a package manager for javascript programming language.
+ It is the default package manager for the javascript runtime environment node.js.
+  It consists of a command line client, 
+ also called npm, and an online database of public 
+ and paid-for private packages, called the npm registry. 
+ The registry is accessed via the client,
+  and the available packages can be browsed and searched via the npm website.
+
+
+
+
+
+//npm is the world's largest software registry.
+
+
+// NPM understanding
+// installing and uninstalling anything basics & advanced
+// install -> npm i packageKaNaam
+// uninstall -> npm uninstall packageKaNaam
+
+//installing particular versions
+// npm i packageKaNaam@1.2.3
+
+
+// understanding node_modules
+// dependencies- packages and packages ki dependencies
+// devdependencies- packages for development only par jab app ban jaiga or upload ho jai ga tab ham in packages ko use nahi kar rahe honge
+
+// scripts - understanding default scripts PATH and custom scripts
+
+
+//start and test scripts
+// npm start -> node index.js
+// npm test -> jest
+
