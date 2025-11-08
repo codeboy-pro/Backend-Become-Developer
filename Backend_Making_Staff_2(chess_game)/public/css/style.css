@@ -1,0 +1,208 @@
+
+        /* Global styles for better appearance */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Enhanced chessboard container */
+        .chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, minmax(0, 1fr));
+            grid-template-rows: repeat(8, minmax(0, 1fr));
+            width: 480px;
+            height: 480px;
+            transform: rotate(0deg);
+            border: 8px solid #2d3748;
+            border-radius: 12px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 4px rgba(255, 255, 255, 0.1),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.05);
+            background: #2d3748;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .chessboard:hover {
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 0 4px rgba(255, 255, 255, 0.2),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Improved piece styling */
+        .piece.white {
+            color: #ffffff;
+            text-shadow: 
+                -2px -2px 0 #000,
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000,
+                 0 0 8px rgba(255, 255, 255, 0.3),
+                 3px  3px 6px rgba(0,0,0,0.7);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+        }
+
+        .piece.black {
+            color: #2a2a2a;
+            text-shadow: 
+                -1px -1px 0 #fff,
+                 1px -1px 0 #fff,
+                -1px  1px 0 #fff,
+                 1px  1px 0 #fff,
+                 0 0 6px rgba(0, 0, 0, 0.2),
+                 2px  2px 4px rgba(255,255,255,0.4);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .flipped {
+            transform: rotate(180deg);
+        }
+
+        /* Enhanced square styling */
+        .square {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .square:hover {
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .square.light {
+            background: linear-gradient(135deg, #f7f3e9 0%, #f0d9b5 100%);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .square.dark {
+            background: linear-gradient(135deg, #c4915c 0%, #b58863 50%, #a67c52 100%);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        /* Add subtle pattern to squares */
+        .square.light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .square.dark::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Enhanced piece styling */
+        .piece {
+            font-size: 42px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 1;
+            position: relative;
+        }
+
+        .piece:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .piece.draggable {
+            cursor: grab;
+        }
+
+        .piece.draggable:active {
+            cursor: grabbing;
+        }
+
+        .dragging {
+            opacity: 0.7;
+            transform: scale(1.15);
+            z-index: 100;
+            filter: brightness(1.3) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+        }
+
+        /* Rotate pieces for black player */
+        .flipped .piece {
+            transform: rotate(180deg);
+        }
+
+        /* Highlight effects for valid moves */
+        .square.highlight {
+            background: rgba(255, 255, 0, 0.3) !important;
+            box-shadow: inset 0 0 0 3px rgba(255, 255, 0, 0.6);
+        }
+
+        .square.selected {
+            background: rgba(0, 255, 0, 0.3) !important;
+            box-shadow: inset 0 0 0 3px rgba(0, 255, 0, 0.7);
+        }
+
+        /* Add coordinate labels */
+        .chessboard::after {
+            content: 'A B C D E F G H';
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            font-size: 12px;
+            font-weight: bold;
+            color: #64748b;
+            padding: 0 4px;
+        }
+
+        /* Animation for piece movement */
+        @keyframes pieceMove {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .piece.moving {
+            animation: pieceMove 0.3s ease;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .chessboard {
+                width: 90vmin;
+                height: 90vmin;
+                max-width: 400px;
+                max-height: 400px;
+            }
+            
+            .piece {
+                font-size: min(6vmin, 36px);
+            }
+        }
+
+        /* Add subtle glow effect */
+        .chessboard {
+            background: radial-gradient(circle at center, #374151 0%, #2d3748 100%);
+        }
+
+        /* Enhanced visual feedback */
+        .square.last-move {
+            background: rgba(255, 255, 0, 0.2) !important;
+            box-shadow: inset 0 0 0 2px rgba(255, 255, 0, 0.5);
+        }
+    
